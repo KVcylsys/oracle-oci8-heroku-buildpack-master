@@ -24,6 +24,7 @@ version = 'ruby-3.2.2' if version.nil?
 OCI8_SO_DIR="#{ARGV[0]}/vendor/#{version}/" 
 
 ORACLE_INSTANT_CLIENT_DIR="#{ARGV[0]}/vendor/oracle_instantclient"
+TNS_ADMIN_PATH = "#{ARGV[0]}/config/tns_admin"
 
 indent "Making folders..."
 `mkdir -p #{OCI8_SO_DIR}`
@@ -44,5 +45,7 @@ unless $?.success?
   indent "Failure while downloading Oracle instant client archive: #{$?}"
   exit 1
 end
+
+ENV['TNS_ADMIN'] = TNS_ADMIN_PATH
 
 indent "Done."
