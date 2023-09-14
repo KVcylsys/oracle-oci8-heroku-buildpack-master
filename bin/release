@@ -2,6 +2,7 @@
 
 EXISTING_LD_LIBRARY_PATH = ENV['LD_LIBRARY_PATH']
 new_ld_library_path = "vendor/oracle_instantclient"
+TNS_ADMIN_PATH = "config/tns_admin"
 
 if ! EXISTING_LD_LIBRARY_PATH.nil? && ! EXISTING_LD_LIBRARY_PATH.empty?
   new_ld_library_path = EXISTING_LD_LIBRARY_PATH + ":" + new_ld_library_path
@@ -11,4 +12,5 @@ puts <<-CONF
 config_vars:
   LD_LIBRARY_PATH: #{new_ld_library_path}
   NLS_LANG: AMERICAN_AMERICA.UTF8
+  TNS_ADMIN: #{TNS_ADMIN_PATH}
 CONF
